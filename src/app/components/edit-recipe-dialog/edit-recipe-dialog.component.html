@@ -1,0 +1,62 @@
+<h2 mat-dialog-title>Редактировать рецепт</h2>
+
+<mat-dialog-content class="content">
+  <!-- Название рецепта -->
+  <mat-form-field appearance="fill" class="full-width">
+    <mat-label>Название рецепта</mat-label>
+    <input matInput [(ngModel)]="recipeName" />
+  </mat-form-field>
+
+  <!-- Список ингредиентов -->
+  <div class="ingredients">
+    <h3>Ингредиенты</h3>
+    <div
+      *ngFor="let ingredient of ingredients; let i = index"
+      class="ingredient-row"
+    >
+      <mat-form-field appearance="fill" class="ingredient-input">
+        <mat-label>Название</mat-label>
+        <input matInput [(ngModel)]="ingredient.name" />
+      </mat-form-field>
+
+      <mat-form-field appearance="fill" class="ingredient-input">
+        <mat-label>Количество</mat-label>
+        <input matInput type="number" [(ngModel)]="ingredient.amount" />
+      </mat-form-field>
+
+      <mat-form-field appearance="fill" class="ingredient-input">
+        <mat-label>Единица измерения</mat-label>
+        <mat-select [(ngModel)]="ingredient.unit">
+          <mat-option *ngFor="let unit of units" [value]="unit">{{
+            unit
+          }}</mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <button mat-icon-button color="warn" (click)="removeIngredient(i)">
+        <mat-icon>delete</mat-icon>
+      </button>
+    </div>
+
+    <button mat-button color="primary" (click)="addIngredient()">
+      Добавить ингредиент
+    </button>
+  </div>
+
+  <!-- Описание рецепта -->
+  <mat-form-field appearance="fill" class="full-width">
+    <mat-label>Описание процесса приготовления</mat-label>
+    <textarea matInput rows="4" [(ngModel)]="recipeDescription"></textarea>
+  </mat-form-field>
+
+  <!-- Загрузка изображения -->
+  <div class="image-upload">
+    <input type="file" (change)="onImageUpload($event)" />
+    <img *ngIf="imageUrl" [src]="imageUrl" alt="Фото рецепта" />
+  </div>
+</mat-dialog-content>
+
+<mat-dialog-actions align="end">
+  <button mat-button (click)="closeDialog()">Отмена</button>
+  <button mat-button color="primary" (click)="saveRecipe()">Сохранить</button>
+</mat-dialog-actions>

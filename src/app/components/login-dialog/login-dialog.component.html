@@ -1,0 +1,32 @@
+<h2 mat-dialog-title class="login-title">Логин</h2>
+<mat-dialog-content [formGroup]="loginForm">
+  <mat-form-field appearance="fill" class="full-width">
+    <mat-label>Email</mat-label>
+    <input matInput formControlName="email" required />
+    <mat-error *ngIf="loginForm.get('email')?.hasError('required')">
+      Email обязателен
+    </mat-error>
+    <mat-error *ngIf="loginForm.get('email')?.hasError('email')">
+      Некорректный email
+    </mat-error>
+  </mat-form-field>
+
+  <mat-form-field appearance="fill" class="full-width">
+    <mat-label>Пароль</mat-label>
+    <input matInput type="password" formControlName="password" required />
+    <mat-error *ngIf="loginForm.get('password')?.hasError('required')">
+      Пароль обязателен
+    </mat-error>
+  </mat-form-field>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <button mat-button (click)="closeDialog()">Отмена</button>
+  <button
+    mat-button
+    color="primary"
+    (click)="onSubmit()"
+    [disabled]="loginForm.invalid"
+  >
+    Войти
+  </button>
+</mat-dialog-actions>

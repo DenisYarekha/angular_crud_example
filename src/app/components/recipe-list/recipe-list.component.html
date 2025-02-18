@@ -1,0 +1,19 @@
+<div class="recipe-list">
+  <h2 class="recipe-list-title">Список рецептов</h2>
+  <ul>
+    <li *ngFor="let recipe of recipes" class="recipe-item">
+      <div class="recipe-info">
+        <span class="recipe-name">{{ recipe.name }}</span>
+        <span class="recipe-date">{{
+          recipe.createdAt | date : "dd.MM.yyyy"
+        }}</span>
+      </div>
+      <img
+        *ngIf="recipe.image"
+        [src]="recipe.image"
+        alt="Миниатюра"
+        class="recipe-thumbnail"
+      />
+    </li>
+  </ul>
+</div>

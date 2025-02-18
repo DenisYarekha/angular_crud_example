@@ -1,0 +1,24 @@
+<div class="recipe-card">
+  <img *ngIf="recipe.image" [src]="recipe.image" alt="Фото рецепта" />
+
+  <h3 class="recipe-name">{{ recipe.name }}</h3>
+  <p class="recipe-description">{{ recipe.description }}</p>
+
+  <h4 class="ingredients-title">Ингредиенты:</h4>
+  <ul class="recipe-ingredients">
+    <li *ngFor="let ingredient of recipe.ingredients">
+      {{ ingredient.name }} - {{ ingredient.amount }} {{ ingredient.unit }}
+    </li>
+  </ul>
+
+  <div class="ui-card">
+    <button class="edit-button" (click)="editRecipe()">
+      <mat-icon>edit</mat-icon>
+      <span>Редактировать</span>
+    </button>
+    <button class="delete-button" (click)="deleteRecipe()">
+      <mat-icon>delete</mat-icon>
+      <span>Удалить</span>
+    </button>
+  </div>
+</div>

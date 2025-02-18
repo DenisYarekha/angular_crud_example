@@ -1,0 +1,36 @@
+.full-width {
+    width: 100%;
+  }
+  
+  .ingredients {
+    margin-top: 5px;
+    gap:10px;
+    margin-bottom: 10px;
+
+  }
+  
+  .ingredient-row {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    margin-bottom: 10px;
+  }
+  
+  .ingredient-input {
+    flex: 1;
+  }
+  
+  .image-upload {
+    margin-top: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+  }
+  
+  img {
+    margin-top: 10px;
+    max-width: 100%;
+    height: auto;
+    border-radius: 5px;
+  }
+  
